@@ -2,18 +2,15 @@
 
 {% block content %}
 <p>Topics</p>
-{% comment %} <ul> {% endcomment %}
     {% for topic in topics %}
-        {% comment %} <li> {% endcomment %}
         <details>
             <summary>
-            {{ topic }}
+            <a href="{% url 'learning_logs:topic' topic.id %}">{{topic}}</a>
             </summary>
+            
         </details>
-        {% comment %} </li> {% endcomment %}
     {% empty %}
         <p>No topics have been added yet.</p>
     {% endfor %}
-{% comment %} </ul> {% endcomment %}
 {% endblock content %}
 

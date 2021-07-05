@@ -12,5 +12,7 @@
     {% empty %}
         <p>No topics have been added yet.</p>
     {% endfor %}
+
+    <a href="{% url 'learning_logs:create' %}">Add a new topic</a>
 {% endblock content %}
 

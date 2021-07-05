@@ -16,6 +16,9 @@ urlpatterns = [
     # Detail page for a single topic
     path('topics/<int:topic_id>/', views.topic, name='topic'),
 
+    # Delete a topic
+    path('topics/<int:topic_id>/delete/', views.delete_topic, name='delete_topic'),
+
     # Page for adding new topics
     path('topics/create', views.create, name='create'),
 

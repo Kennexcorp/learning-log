@@ -46,7 +46,7 @@ def create(request):
         form = TopicForm(data=request.POST)
 
         if form.is_valid():
-            
+
             new_topic = form.save(commit=False)
             new_topic.owner = request.user
             new_topic.save()
@@ -105,3 +105,14 @@ def edit_entry(request, entry_id):
 
     context= {'entry' : entry, 'topic' : topic, 'form': form }
     return render(request, 'learning_logs/edit_entry.html', context)
+
+@login_required
+def delete_topic(request, topic_id):
+
+    topic = Topic.objects.get(id=topic_id)
+
+    if topic.owner != request.user:
+        raise Http404
+    
+    topic.delete()
+    return redirect('learning_logs:topics')
